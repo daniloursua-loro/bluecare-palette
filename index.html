@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueCare Laundry - Color Palette</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background:  #FFFFFF;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #081F5C;
+            margin-bottom: 8px;
+            font-size:  2em;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7096D1;
+            margin-bottom: 50px;
+            font-size:  0.95em;
+            font-weight: 400;
+        }
+
+        .palette-grid {
+            display: grid;
+            gap: 16px;
+            margin-bottom:  40px;
+        }
+
+        . color-card {
+            background:  #FFFFFF;
+            border:  1px solid #EDF1F6;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .color-card:hover {
+            border-color: #7096D1;
+        }
+
+        .color-display {
+            height: 80px;
+            width: 100%;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .color-display:active {
+            opacity: 0.8;
+        }
+
+        .color-info {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .color-details {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        . color-hex {
+            font-size: 1.1em;
+            font-weight:  600;
+            color: #081F5C;
+            font-family: 'Courier New', monospace;
+        }
+
+        .color-name {
+            font-size: 0.9em;
+            color: #7096D1;
+        }
+
+        .copy-btn {
+            padding: 8px 20px;
+            background: #081F5C;
+            color:  white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.85em;
+            transition: background 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #0A2870;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+
+        .copied {
+            background: #7096D1 !important;
+        }
+
+        .export-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background: #EDF1F6;
+            border-radius: 8px;
+        }
+
+        .export-section h2 {
+            color:  #081F5C;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content:  center;
+            flex-wrap: wrap;
+        }
+
+        .export-btn {
+            padding: 12px 24px;
+            background: #FFFFFF;
+            color: #081F5C;
+            border: 1px solid #7096D1;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .export-btn:hover {
+            background: #081F5C;
+            color:  #FFFFFF;
+            border-color: #081F5C;
+        }
+
+        . toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #081F5C;
+            color:  white;
+            padding: 14px 20px;
+            border-radius:  6px;
+            box-shadow: 0 4px 12px rgba(8, 31, 92, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9em;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.6em;
+            }
+            
+            .color-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .copy-btn {
+                width: 100%;
+            }
+
+            .export-buttons {
+                flex-direction: column;
+            }
+
+            .export-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BlueCare Laundry</h1>
+        <p class="subtitle">Color Palette</p>
+
+        <div class="palette-grid">
+            <!-- Primary Color -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #081F5C;" onclick="copyColor('#081F5C')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#081F5C</div>
+                        <div class="color-name">Navy Blue</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#081F5C')">Copy</button>
+                </div>
+            </div>
+
+            <!-- Sky Blue -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #D0E3FF;" onclick="copyColor('#D0E3FF')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#D0E3FF</div>
+                        <div class="color-name">Sky Blue</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#D0E3FF')">Copy</button>
+                </div>
+            </div>
+
+            <!-- Periwinkle Blue -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #7096D1;" onclick="copyColor('#7096D1')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#7096D1</div>
+                        <div class="color-name">Periwinkle Blue</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#7096D1')">Copy</button>
+                </div>
+            </div>
+
+            <!-- Light Gray -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #EDF1F6; border:  1px solid #D0E3FF;" onclick="copyColor('#EDF1F6')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#EDF1F6</div>
+                        <div class="color-name">Light Gray</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#EDF1F6')">Copy</button>
+                </div>
+            </div>
+
+            <!-- White -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #FFFFFF; border: 1px solid #D0E3FF;" onclick="copyColor('#FFFFFF')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#FFFFFF</div>
+                        <div class="color-name">White</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#FFFFFF')">Copy</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="export-section">
+            <h2>Export Palette</h2>
+            <div class="export-buttons">
+                <button class="export-btn" onclick="exportAsCSS()">CSS Variables</button>
+                <button class="export-btn" onclick="exportAsJSON()">JSON</button>
+                <button class="export-btn" onclick="exportAsSCSS()">SCSS</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        function copyColor(color) {
+            navigator.clipboard. writeText(color).then(() => {
+                showToast(`Copied ${color}`);
+            });
+        }
+
+        function showToast(message) {
+            const toast = document. getElementById('toast');
+            toast. textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        function exportAsCSS() {
+            const css = `:root {
+  /* BlueCare Laundry Color Palette */
+  --navy-blue: #081F5C;
+  --sky-blue: #D0E3FF;
+  --periwinkle-blue: #7096D1;
+  --light-gray: #EDF1F6;
+  --white: #FFFFFF;
+}`;
+            navigator.clipboard.writeText(css).then(() => {
+                showToast('CSS Variables copied');
+            });
+        }
+
+        function exportAsJSON() {
+            const json = `{
+  "colors": {
+    "navyBlue": "#081F5C",
+    "skyBlue": "#D0E3FF",
+    "periwinkleBlue": "#7096D1",
+    "lightGray": "#EDF1F6",
+    "white": "#FFFFFF"
+  }
+}`;
+            navigator.clipboard.writeText(json).then(() => {
+                showToast('JSON copied');
+            });
+        }
+
+        function exportAsSCSS() {
+            const scss = `// BlueCare Laundry Color Palette
+$navy-blue: #081F5C;
+$sky-blue: #D0E3FF;
+$periwinkle-blue: #7096D1;
+$light-gray: #EDF1F6;
+$white: #FFFFFF;`;
+            navigator.clipboard.writeText(scss).then(() => {
+                showToast('SCSS Variables copied');
+            });
+        }
+    </script>
+</body>
+</html>
