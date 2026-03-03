@@ -39,13 +39,42 @@
             font-weight: 400;
         }
 
+        .section-divider {
+            text-align: center;
+            margin: 40px 0 24px 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #D0E3FF 20%, #D0E3FF 80%, transparent);
+        }
+
+        .section-label {
+            display: inline-block;
+            background: #FFFFFF;
+            padding: 0 20px;
+            color: #081F5C;
+            font-weight: 600;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
         .palette-grid {
             display: grid;
             gap: 16px;
             margin-bottom:  40px;
         }
 
-        . color-card {
+        .color-card {
             background:  #FFFFFF;
             border:  1px solid #EDF1F6;
             border-radius: 8px;
@@ -81,7 +110,7 @@
             gap: 16px;
         }
 
-        . color-hex {
+        .color-hex {
             font-size: 1.1em;
             font-weight:  600;
             color: #081F5C;
@@ -157,7 +186,7 @@
             border-color: #081F5C;
         }
 
-        . toast {
+        .toast {
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -207,6 +236,78 @@
         <h1>BlueCare Laundry</h1>
         <p class="subtitle">Color Palette</p>
 
+        <!-- NEW PALETTE -->
+        <div class="section-divider">
+            <span class="section-label">New</span>
+        </div>
+
+        <div class="palette-grid">
+            <!-- New Color 1 -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #00439C;" onclick="copyColor('#00439C')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#00439C</div>
+                        <div class="color-name">Royal Blue</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#00439C')">Copy</button>
+                </div>
+            </div>
+
+            <!-- New Color 2 -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #0053BD;" onclick="copyColor('#0053BD')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#0053BD</div>
+                        <div class="color-name">Bright Blue</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#0053BD')">Copy</button>
+                </div>
+            </div>
+
+            <!-- New Color 3 -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #01459A;" onclick="copyColor('#01459A')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#01459A</div>
+                        <div class="color-name">Deep Blue</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#01459A')">Copy</button>
+                </div>
+            </div>
+
+            <!-- New Color 4 -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #00A5E2;" onclick="copyColor('#00A5E2')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#00A5E2</div>
+                        <div class="color-name">Cyan Blue</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#00A5E2')">Copy</button>
+                </div>
+            </div>
+
+            <!-- New Color 5 -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #002D7E;" onclick="copyColor('#002D7E')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#002D7E</div>
+                        <div class="color-name">Dark Blue</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#002D7E')">Copy</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- OLD PALETTE -->
+        <div class="section-divider">
+            <span class="section-label">Old</span>
+        </div>
+
         <div class="palette-grid">
             <!-- Primary Color -->
             <div class="color-card">
@@ -255,7 +356,14 @@
                     <button class="copy-btn" onclick="copyColor('#EDF1F6')">Copy</button>
                 </div>
             </div>
+        </div>
 
+        <!-- CLASSIC PALETTE -->
+        <div class="section-divider">
+            <span class="section-label">Classic</span>
+        </div>
+
+        <div class="palette-grid">
             <!-- White -->
             <div class="color-card">
                 <div class="color-display" style="background-color: #FFFFFF; border: 1px solid #D0E3FF;" onclick="copyColor('#FFFFFF')"></div>
@@ -265,6 +373,18 @@
                         <div class="color-name">White</div>
                     </div>
                     <button class="copy-btn" onclick="copyColor('#FFFFFF')">Copy</button>
+                </div>
+            </div>
+
+            <!-- Black -->
+            <div class="color-card">
+                <div class="color-display" style="background-color: #000000;" onclick="copyColor('#000000')"></div>
+                <div class="color-info">
+                    <div class="color-details">
+                        <div class="color-hex">#000000</div>
+                        <div class="color-name">Black</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyColor('#000000')">Copy</button>
                 </div>
             </div>
         </div>
@@ -283,14 +403,14 @@
 
     <script>
         function copyColor(color) {
-            navigator.clipboard. writeText(color).then(() => {
+            navigator.clipboard.writeText(color).then(() => {
                 showToast(`Copied ${color}`);
             });
         }
 
         function showToast(message) {
-            const toast = document. getElementById('toast');
-            toast. textContent = message;
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
@@ -299,12 +419,22 @@
 
         function exportAsCSS() {
             const css = `:root {
-  /* BlueCare Laundry Color Palette */
+  /* BlueCare Laundry Color Palette - NEW */
+  --royal-blue: #00439C;
+  --bright-blue: #0053BD;
+  --deep-blue: #01459A;
+  --cyan-blue: #00A5E2;
+  --dark-blue: #002D7E;
+  
+  /* BlueCare Laundry Color Palette - OLD */
   --navy-blue: #081F5C;
   --sky-blue: #D0E3FF;
   --periwinkle-blue: #7096D1;
   --light-gray: #EDF1F6;
+  
+  /* BlueCare Laundry Color Palette - CLASSIC */
   --white: #FFFFFF;
+  --black: #000000;
 }`;
             navigator.clipboard.writeText(css).then(() => {
                 showToast('CSS Variables copied');
@@ -314,11 +444,23 @@
         function exportAsJSON() {
             const json = `{
   "colors": {
-    "navyBlue": "#081F5C",
-    "skyBlue": "#D0E3FF",
-    "periwinkleBlue": "#7096D1",
-    "lightGray": "#EDF1F6",
-    "white": "#FFFFFF"
+    "new": {
+      "royalBlue": "#00439C",
+      "brightBlue": "#0053BD",
+      "deepBlue": "#01459A",
+      "cyanBlue": "#00A5E2",
+      "darkBlue": "#002D7E"
+    },
+    "old": {
+      "navyBlue": "#081F5C",
+      "skyBlue": "#D0E3FF",
+      "periwinkleBlue": "#7096D1",
+      "lightGray": "#EDF1F6"
+    },
+    "classic": {
+      "white": "#FFFFFF",
+      "black": "#000000"
+    }
   }
 }`;
             navigator.clipboard.writeText(json).then(() => {
@@ -327,12 +469,22 @@
         }
 
         function exportAsSCSS() {
-            const scss = `// BlueCare Laundry Color Palette
+            const scss = `// BlueCare Laundry Color Palette - NEW
+$royal-blue: #00439C;
+$bright-blue: #0053BD;
+$deep-blue: #01459A;
+$cyan-blue: #00A5E2;
+$dark-blue: #002D7E;
+
+// BlueCare Laundry Color Palette - OLD
 $navy-blue: #081F5C;
 $sky-blue: #D0E3FF;
 $periwinkle-blue: #7096D1;
 $light-gray: #EDF1F6;
-$white: #FFFFFF;`;
+
+// BlueCare Laundry Color Palette - CLASSIC
+$white: #FFFFFF;
+$black: #000000;`;
             navigator.clipboard.writeText(scss).then(() => {
                 showToast('SCSS Variables copied');
             });
